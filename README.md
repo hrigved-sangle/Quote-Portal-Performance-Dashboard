@@ -45,11 +45,12 @@ A full-stack web application that allows contractors to submit project quotes an
     python app.py
 5. **Open index.html and dashboard.html in your browser**
 
-**Mock Data**
+## Mock Data
 1. Generated 1000+ fake roofing project entries using the Faker library to simulate real-world data.
 2. Data includes roof size, type, contractor info, location, and project dates.
+3. *quotes.db* is the file which has the mock data stored.
 
-**Future Improvements**
+## Future Improvements
 1. Add user login and authentication
 2. Add validations and real-time error messages
 3. Export dashboard data to CSV
