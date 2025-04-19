@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contractor Quote Form</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+  <div class="container">
+    <h1>Contractor Quote Form</h1>
+    <form id="quoteForm">
+      <label>Contractor Name:</label>
+      <input type="text" name="contractorName" required>
+
+      <label>Company:</label>
+      <input type="text" name="company" required>
+
+      <label>Roof Size (sq ft):</label>
+      <input type="number" name="roofSize" required>
+
+      <label>Roof Type:</label>
+      <select name="roofType" required>
+        <option value="Metal">Metal</option>
+        <option value="TPO">TPO</option>
+        <option value="Foam">Foam</option>
+        <option value="EPDM">EPDM</option>
+        <option value="Asphalt">Asphalt</option>
+      </select>
+
+      <label>Project City:</label>
+      <input type="text" name="city" required>
+
+      <label>Project State:</label>
+      <input type="text" name="state" required>
+
+      <label>Project Date:</label>
+      <input type="date" name="projectDate" required>
+
+      <button type="submit">Submit Quote</button>
+    </form>
+
+    <p id="responseMessage"></p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

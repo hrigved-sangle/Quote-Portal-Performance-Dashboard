@@ -1,0 +1,108 @@
+/* General Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7fc;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Heading */
+h1 {
+    font-size: 2.5em;
+    color: #4a90e2;
+    margin-top: 20px;
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: 1.5px;
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #4a90e2, #3578e5);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Section */
+form {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    margin-top: 40px;
+}
+
+/* Form Elements */
+label {
+    font-size: 1.2em;
+    color: #4a90e2;
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: inline-block;
+    text-align: left;
+    width: 100%;
+    margin-top: 10px;
+}
+
+input, select {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    font-size: 1.1em;
+    border: 2px solid #dcdfe6;
+    border-radius: 8px;
+    background-color: #f5f7fa;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease-in-out;
+}
+
+input:focus, select:focus {
+    border-color: #3578e5;
+    outline: none;
+}
+
+/* Submit Button */
+button[type="submit"] {
+    padding: 12px 25px;
+    font-size: 1.2em;
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    margin-top: 20px;
+}
+
+button[type="submit"]:hover {
+    background-color: #3578e5;
+}
+
+button[type="submit"]:focus {
+    outline: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    form {
+        padding: 15px;
+        width: 90%;
+    }
+
+    label {
+        font-size: 1.1em;
+    }
+
+    input, select {
+        padding: 10px;
+        font-size: 1em;
+    }
+
+    button[type="submit"] {
+        padding: 15px;
+    }
+}

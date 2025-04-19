@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Performance Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { font-family: Arial; margin: 20px; }
+    .summary { margin-bottom: 30px; }
+    .chart-container { width: 80%; margin: auto; margin-bottom: 50px; }
+    h2 { text-align: center; }
+  </style>
+</head>
+<body>
+
+
+
+  <h1>Project Performance Dashboard</h1>
+
+  <div>
+  <div style="margin-bottom: 30px;">
+    <label for="stateFilter">State:</label>
+    <select id="stateFilter">
+      <option value="">All</option>
+      <!-- Populate dynamically -->
+    </select>
+  
+    <label for="roofTypeFilter">Roof Type:</label>
+    <select id="roofTypeFilter">
+      <option value="">All</option>
+      <!-- Populate dynamically -->
+    </select>
+  
+    <label for="dateFilter">From Year:</label>
+    <select id="dateFilter">
+      <option value="">All</option>
+      <!-- Populate dynamically -->
+    </select>
+
+    <div style="margin-bottom: 20px; margin-top: 20px;">
+      <button onclick="applyFilters()">Apply Filters</button>
+      <button onclick="resetFilters()">Reset Filters</button>
+      <button onclick="exportPDF()">Export PDF</button>
+    </div>
+  </div>
+  </div>
+  
+  <div id="dashboard-content" style="width: 800px; margin: auto; padding: 20px;">
+  <div class="summary" id="summary">
+    <h2>Summary</h2>
+    <p>Total Projects: <span id="totalProjects"></span></p>
+    <p>Average Roof Size: <span id="avgRoofSize"></span> sq ft</p>
+    <p>Most Common Roof Type: <span id="commonRoofType"></span></p>
+  </div>
+
+  <div class="chart-container">
+    <h2>Projects by State</h2>
+    <canvas id="projectsByStateChart"></canvas>
+  </div>
+
+  <div class="chart-container">
+    <h2>Average Roof Size by Roof Type</h2>
+    <canvas id="avgRoofSizeByTypeChart"></canvas>
+  </div>
+
+  <div class="chart-container">
+    <h2>Monthly Project Trend</h2>
+    <canvas id="monthlyTrendChart"></canvas>
+  </div>
+  </div>
+  <script src="dashboard.js"></script>
+
+  <!-- PDF export library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+
+</body>
+</html>
