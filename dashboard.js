@@ -1,17 +1,15 @@
-// Utility: fetch JSON from API
+
 async function fetchData(url) {
     const res = await fetch(url);
     return await res.json();
   }
   
-  // Global filter state
   let currentFilters = {
     state: "",
     roof_type: "",
     year: ""
   };
   
-  // Add filters to URL
   function addFiltersToURL(baseURL) {
     const params = new URLSearchParams();
     if (currentFilters.state) params.append("state", currentFilters.state);
@@ -20,11 +18,11 @@ async function fetchData(url) {
     return `${baseURL}?${params.toString()}`;
   }
   
-  // Fetch & Render Filter Dropdowns
+  
   async function populateFilterDropdowns() {
     const allData = await fetchData("http://localhost:5000/api/stats/by-state");
   
-    // States
+    
     const stateSelect = document.getElementById("stateFilter");
     for (let state of Object.keys(allData)) {
       let option = document.createElement("option");
@@ -33,7 +31,7 @@ async function fetchData(url) {
       stateSelect.appendChild(option);
     }
   
-    // Roof Types
+    
     const roofTypeRes = await fetchData("http://localhost:5000/api/stats/roof-size-type");
     const roofTypeSelect = document.getElementById("roofTypeFilter");
     for (let type of Object.keys(roofTypeRes)) {
@@ -43,7 +41,7 @@ async function fetchData(url) {
       roofTypeSelect.appendChild(option);
     }
   
-    // Years (hardcoded for now)
+    
     const yearSelect = document.getElementById("dateFilter");
     const currentYear = new Date().getFullYear();
     for (let y = currentYear; y >= currentYear - 5; y--) {
@@ -54,7 +52,7 @@ async function fetchData(url) {
     }
   }
   
-  // ========= Summary =========
+  
   async function renderSummary() {
     const summary = await fetchData(addFiltersToURL("http://localhost:5000/api/stats/summary"));
     document.getElementById("totalProjects").textContent = summary.totalProjects;
@@ -62,7 +60,7 @@ async function fetchData(url) {
     document.getElementById("commonRoofType").textContent = summary.commonRoofType;
   }
   
-  // ========= Charts =========
+  
   let charts = [];
   
   function destroyCharts() {
@@ -149,14 +147,13 @@ async function fetchData(url) {
     charts.push(chart);
   }
   
-  // ========== Apply Filters ==========
+  
   async function applyFilters() {
-    // Get selected values
     currentFilters.state = document.getElementById("stateFilter").value;
     currentFilters.roof_type = document.getElementById("roofTypeFilter").value;
     currentFilters.year = document.getElementById("dateFilter").value;
   
-    // Refresh everything
+    
     destroyCharts();
     await renderSummary();
     await renderProjectsByState();
@@ -166,17 +163,17 @@ async function fetchData(url) {
   
   
   function resetFilters() {
-    // Reset filter dropdowns
+    
     document.getElementById("stateFilter").value = "";
     document.getElementById("roofTypeFilter").value = "";
     document.getElementById("dateFilter").value = "";
   
-    // Reset global filter object
+    
     currentFilters.state = "";
     currentFilters.roof_type = "";
     currentFilters.year = "";
   
-    // Refresh dashboard with unfiltered data
+    
     applyFilters();
   }
   
@@ -197,7 +194,7 @@ async function fetchData(url) {
   
     let position = 0;
   
-    // If content is taller than one page, add more pages
+    
     if (imgHeight > pageHeight) {
       let heightLeft = imgHeight;
   
@@ -216,12 +213,9 @@ async function fetchData(url) {
   }
   
   
-  
-  
-  // ========== Init ==========
   async function initDashboard() {
     await populateFilterDropdowns();
-    await applyFilters(); // Render everything once by default
+    await applyFilters(); 
   }
   
   initDashboard();
