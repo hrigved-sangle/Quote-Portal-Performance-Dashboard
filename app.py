@@ -5,13 +5,10 @@ import os
 from collections import Counter
 from datetime import datetime
 
-
 app = Flask(__name__)
 CORS(app)
 
 DB_NAME = "quotes.db"
-
-
 
 def build_filters(params):
     filters = []
@@ -31,7 +28,6 @@ def build_filters(params):
 
     where_clause = "WHERE " + " AND ".join(filters) if filters else ""
     return where_clause, values
-
 
 @app.route('/api/filters')
 def get_filters():
@@ -53,9 +49,6 @@ def get_filters():
         'roof_types': roof_types,
         'dates': dates
     })
-
-
-
 
 def init_db():
     if not os.path.exists(DB_NAME):
@@ -97,7 +90,6 @@ def submit_quote():
     conn.close()
     return jsonify({'message': 'Quote submitted successfully'}), 201
 
-# Optional: to test retrieval by state or roof type
 @app.route('/api/quotes', methods=['GET'])
 def get_quotes():
     state = request.args.get('state')
@@ -134,10 +126,6 @@ def get_quotes():
     ]
 
     return jsonify(quotes)
-
-
-# from collections import Counter
-# from datetime import datetime
 
 @app.route('/api/stats/summary')
 def summary_stats():
@@ -194,7 +182,6 @@ def monthly_project_trend():
     data = cursor.fetchall()
     conn.close()
     return jsonify({row[0]: row[1] for row in data})
-
 
 
 if __name__ == '__main__':
